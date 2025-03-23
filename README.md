@@ -23,16 +23,17 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
 1. Run `process-run.py` with the following flags: `-l 5:100,5:100`. What should the CPU utilization be (e.g., the percent of time the CPU is in use?) Why do you know this? Use the `-c` and `-p` flags to see if you were right.
    
    <details>
-   <summary>Answer</summary>
+   <summary>Ey! Look at the answer😱</summary>
    
       ![Image 1](command_line_1.png)
 
-   📌 En mi caso, como se observa en la imagen el comando simula 2 procesos como se pide en el enunciado. Cada uno con 5 instrucciones de CPU y cada instrucción toma el 100%.  
+   📌 En mi caso, 'como se observa en la imagen' el comando simula 2 procesos como se pide en el enunciado. Cada uno con 5 instrucciones de CPU y cada instrucción toma el 100%.  
 
    📊 El uso de CPU se refiere al porcentaje de tiempo que la CPU estuvo ocupada ejecutando las instrucciones. Por lo tanto:
    * **Tiempo total de simulación**: 10 unidades de tiempo
    * **CPU ocupada**: 10 unidades (el 100%)
    * **No hubo I/O**: lo que traduce al 0% de uso de entradas/salidas  
+   
    ✅ Debido a que no hubo entradas/salidas, la CPU estuvo ejecutando procesos sin parar durante todo el tiempo. Por eso ambos procesos dan el 100%. 
    </details>
    <br>
