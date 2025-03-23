@@ -24,7 +24,8 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    
    <details>
    <summary>Answer</summary>
-   ![Image 1](command_line_1.png)
+   
+      ![Image 1](command_line_1.png)
 
    📌 En mi caso, como se observa en la imagen el comando simula 2 procesos como se pide en el enunciado. Cada uno con 5 instrucciones de CPU y cada instrucción toma el 100%.  
 
@@ -32,7 +33,6 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    * **Tiempo total de simulación**: 10 unidades de tiempo
    * **CPU ocupada**: 10 unidades (el 100%)
    * **No hubo I/O**: lo que traduce al 0% de uso de entradas/salidas  
-
    ✅ Debido a que no hubo entradas/salidas, la CPU estuvo ejecutando procesos sin parar durante todo el tiempo. Por eso ambos procesos dan el 100%. 
    </details>
    <br>
