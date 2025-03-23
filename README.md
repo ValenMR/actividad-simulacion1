@@ -2,8 +2,8 @@
 
 |Integrante|correo|usuario github|
 |---|---|---|
-|Nombre completo integrante 1|correo integrante 1|gihub user integrante 1|
-|Nombre completo integrante 2|correo integrante 2|gihub user integrante 2|
+|Valentina Muñoz Rincón|valentina.munozr1@udea.edu.co|ValenMR|
+|Juan Felipe Escobar Rendón|juan.escobar15@udea.edu.co|juanfes517|
 
 ## Instrucciones
 
