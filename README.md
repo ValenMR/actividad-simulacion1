@@ -27,7 +27,7 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    
       ![Image 1](command_line_1.png)
 
-   📌 En mi caso, 'como se observa en la imagen' el comando simula 2 procesos como se pide en el enunciado. Cada uno con 5 instrucciones de CPU y cada instrucción toma el 100%.  
+   📌 En mi caso, como se observa en la imagen el comando simula 2 procesos como se pide en el enunciado. Cada uno con 5 instrucciones de CPU y cada instrucción toma el 100%.  
 
    📊 El uso de CPU se refiere al porcentaje de tiempo que la CPU estuvo ocupada ejecutando las instrucciones. Por lo tanto:
    * **Tiempo total de simulación**: 10 unidades de tiempo
