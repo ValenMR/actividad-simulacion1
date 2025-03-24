@@ -89,7 +89,7 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    <details>
    <summary>Answer</summary>
       En este caso, en el primer proceso se está enviando una instrucción que requiere I/O y en el segundo proceso se envían 4 instrucciones de CPU. Inicialmente, se puede llegar a pensar que el proceso 
-      va a tomar la misma cantidad de tiempo que el punto anterior (7 tiempos); sin embargo, debido al uso de la bandera `-S` con el valor `SWITCH_ON_END`, el sistema no cambiará a ningún proceso mientras 
+      va a tomar la misma cantidad de tiempo que el punto anterior (7 tiempos); sin embargo, debido al uso de la bandera <code>-S</code> con el valor <code>SWITCH_ON_END</code>, el sistema no cambiará a ningún proceso mientras 
       una tarea de I/O se esté ejecutando. Por tal motivo, el proceso 2 no empezará hasta que el proceso 1 termine completamente, aunque la CPU se Encuentra disponible, lo que toma un total de 11 tiempos.  
 
       <br>![Image 4](command_line_4.png)
@@ -101,7 +101,7 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    
    <details>
    <summary>Answer</summary>
-      En esta situación, también se está enviando un primer proceso con una instrucción de I/O y un segundo proceso con 4 de CPU, pero ahora, el valor de la bandera `-S` se establece con el valor `SWITCH_ON_IO`. Lo que significa 
+      En esta situación, también se está enviando un primer proceso con una instrucción de I/O y un segundo proceso con 4 de CPU, pero ahora, el valor de la bandera <code>-S</code> se establece con el valor <code>SWITCH_ON_IO</code>. Lo que significa 
       que cuando un proceso inicia una operación I/O, el planificador puede cambiar a otro proceso que esté listo para ejecutarse en la CPU. En nuestro ejemplo, esto permite que el sistema pueda cambiar al proceso numero 2 mientras 
       el primero se encuentra en I/O, estableciendo el tiempo total en 7 tiempos.
 
@@ -113,11 +113,26 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    
    <details>
    <summary>Answer</summary>
-   Coloque aqui su respuerta
+      Para entender mejor el comportamiento de este comando, vamos a desglosar y explicar mejor cada parte del mismo:
+      <ul>
+         <br>
+         <li>✏️ <b><code>./process-run.py</code></b>: Aquí simplemente estamos llamando un archivo python para ejecutar. </li> <br>
+         <li>✏️ <b><code>3:0,5:100,5:100,5:100</code></b>: En esta parte se están lanzando 4 procesos. El primero, <b>'3:0'</b>, indica que se van a realizar 3 instrucciones que requieren I/O. 
+            Los 3 procesos restantes, marcados con <b><code>5:100</code></b>, indican que cada uno lanzará 5 instrucciones que solo usaran CPU. </li><br>
+         <li>✏️ <b><code>-S SWITCH_ON_IO</code></b>: Como se mostró en puntos anteriores, con esta instrucción, le estamos indicando al sistema que cuando un proceso inicia una instrucción de I/O, puede cambiar a otro proceso que esté listo para ejecutarse. </li><br>
+         <li>✏️ <b><code>-I IO_RUN_LATER</code></b>: Con esta instrucción, le estamos indicando al sistema que cuando una tarea de I/O termine, el proceso que la generó no debe ejecutarse necesariamente de inmediato. </li> <br>
+      </ul>
+
+      En conclusión, debido a la presencia de <code>-S SWITCH_ON_IO</code>, se espera que cuando el proceso 1 inicie una operación de I/O, el sistema continúe ejecutando los demás procesos. Sin embargo, debido a la instrucción <code>-I IO_RUN_LATER</code>,
+      cuando la tarea de I/O haya finalizado, el proceso 1 no continuará su ejecución hasta que los demás procesos terminen.
+      Por otro lado, los recursos del sistema se utilizan de manera eficiente cuando el proceso 1 realiza una única operación de I/O. Sin embargo, cuando se ejecutan múltiples operaciones de I/O, el sistema no continuará inmediatamente la ejecución del proceso tras la finalización de cada tarea de          I/O y su lugar, esperará a que los demás procesos terminen.
+
+      <br>![Image 6](command_line_6.png)
+      
    </details>
    <br>
 
-8. Now run the same processes, but with `-I IO RUN IMMEDIATE` set, which immediately runs the process that issued the I/O. How does this behavior differ? Why might running a process that just completed an I/O again be a good idea?
+9. Now run the same processes, but with `-I IO RUN IMMEDIATE` set, which immediately runs the process that issued the I/O. How does this behavior differ? Why might running a process that just completed an I/O again be a good idea?
    
    <details>
    <summary>Answer</summary>
