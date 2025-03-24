@@ -124,10 +124,12 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
       </ul>
 
       En conclusión, debido a la presencia de <code>-S SWITCH_ON_IO</code>, se espera que cuando el proceso 1 inicie una operación de I/O, el sistema continúe ejecutando los demás procesos. Sin embargo, debido a la instrucción <code>-I IO_RUN_LATER</code>,
-      cuando la tarea de I/O haya finalizado, el proceso 1 no continuará su ejecución hasta que los demás procesos terminen.
+      cuando la tarea de I/O haya finalizado, el proceso 1 no continuará su ejecución hasta que los demás procesos terminen. <br>
       Por otro lado, los recursos del sistema se utilizan de manera eficiente cuando el proceso 1 realiza una única operación de I/O. Sin embargo, cuando se ejecutan múltiples operaciones de I/O, el sistema no continuará inmediatamente la ejecución del proceso tras la finalización de cada tarea de          I/O y su lugar, esperará a que los demás procesos terminen.
 
       <br>![Image 6](command_line_6.png)
+
+      📊 En total, la ejecución de los cuatro procesos tomó 31 unidades de tiempo, durante las cuales la CPU estuvo en uso solo el 67.7% del tiempo (Correspondiente a 21 unidades de tiempo).
       
    </details>
    <br>
@@ -136,7 +138,26 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    
    <details>
    <summary>Answer</summary>
-   Coloque aqui su respuerta
+      Si ejecutamos el mismo comando usando <code>-I IO_RUN_IMMEDIATE</code> en vez de <code>-I IO_RUN_LATER</code> obtendremos el siguiente resultado: 
+
+      <br> ![Image 7](command_line_7.png) <br>
+
+      A primera vista podemos observar que solo la CPU también estuvo siendo utilizada durante 21 unidades de tiempo, pero a diferencia del punto anterior, ahora este tiempo también corresponde al tiempo total de ejecución del comando, aun cuando se están ejecutando tres operaciones de I/O. 😦
+      <br>
+      
+      Pero,🤔 ¿Por qué sucede esto?
+      <br>
+      
+      ¿Brujería? 😱
+      <br><img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjB6bDU3c3BuNDQydHN1Z2s1MnI2Y2JkMjgxZ2NkNXo3Yzljdjl5cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LCo3JuJ8ca3XXJQqlM/giphy.webp" width="100">
+      <br>
+
+      Lastimosamente no es brujería 😕. Lo que sucede es que, en nuestro comando, estamos usando la opción <code>-I IO_RUN_IMMEDIATE</code>, que permite que el sistema continue ejecutando de forma inmediata un proceso que terminó una operación de I/O. En nuestro ejemplo,
+      esto significa que cuando el proceso 1 inicia cualquier operación de I/O, y debido a la opción <code>-S SWITCH_ON_IO</code>, el sistema le cede la CPU a otro proceso. Sin embargo, cuando una operación de I/O termina, el sistema inmediatamente le pasa la CPU a ese proceso,
+      para que pueda terminar su ejecución e iniciar la siguiente operación de I/O.
+      <br>
+      📊 De esta forma, la CPU siempre se está usando mientras las operaciones de I/O se resuelven en paralelo, garantizando que la CPU tenga un 100% de eficiencia.
+      
    </details>
    <br>
 
