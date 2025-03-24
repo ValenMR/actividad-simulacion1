@@ -60,7 +60,9 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
 3. Switch the order of the processes: `-l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use `-c` and `-p` to see if you were right)
    
    <details>
-   <summary>Answer</summary>
+   <summary>
+      <h4>Ey! Look at the answer😜</h4>
+   </summary>
       
       ![Image 1](command_line_3.png)
 
