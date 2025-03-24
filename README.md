@@ -90,9 +90,9 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    <summary>Answer</summary>
       En este caso, en el primer proceso se está enviando una instrucción que requiere I/O y en el segundo proceso se envían 4 instrucciones de CPU. Inicialmente, se puede llegar a pensar que el proceso 
       va a tomar la misma cantidad de tiempo que el punto anterior (7 tiempos); sin embargo, debido al uso de la bandera `-S` con el valor `SWITCH_ON_END`, el sistema no cambiará a ningún proceso mientras 
-      una tarea de I/O se esté ejecutando. Por tal motivo, el proceso 2 no empezará hasta que el proceso 1 termine completamente, aunque la CPU se Encuentra disponible.
+      una tarea de I/O se esté ejecutando. Por tal motivo, el proceso 2 no empezará hasta que el proceso 1 termine completamente, aunque la CPU se Encuentra disponible, lo que toma un total de 11 tiempos.  
 
-      ![Image 4](command_line_4.png)
+      <br>![Image 4](command_line_4.png)
       
    </details>
    <br>
@@ -101,7 +101,11 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    
    <details>
    <summary>Answer</summary>
-   Coloque aqui su respuerta
+      En esta situación, también se está enviando un primer proceso con una instrucción de I/O y un segundo proceso con 4 de CPU, pero ahora, el valor de la bandera `-S` se establece con el valor `SWITCH_ON_IO`. Lo que significa 
+      que cuando un proceso inicia una operación I/O, el planificador puede cambiar a otro proceso que esté listo para ejecutarse en la CPU. En nuestro ejemplo, esto permite que el sistema pueda cambiar al proceso numero 2 mientras 
+      el primero se encuentra en I/O, estableciendo el tiempo total en 7 tiempos.
+
+      <br>![Image 5](command_line_5.png)
    </details>
    <br>
 
