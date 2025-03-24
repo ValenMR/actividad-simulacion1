@@ -61,7 +61,7 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    
    <details>
    <summary>
-      <h4>Ey! Look at the answer😜</h4>
+      <h4>Ey! Look at the answer🤗</h4>
    </summary>
       
       ![Image 1](command_line_3.png)
