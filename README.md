@@ -155,7 +155,7 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
       Lastimosamente no es brujería 😕. Lo que sucede es que, en nuestro comando, estamos usando la opción <code>-I IO_RUN_IMMEDIATE</code>, que permite que el sistema continue ejecutando de forma inmediata un proceso que terminó una operación de I/O. En nuestro ejemplo,
       esto significa que cuando el proceso 1 inicia cualquier operación de I/O, y debido a la opción <code>-S SWITCH_ON_IO</code>, el sistema le cede la CPU a otro proceso. Sin embargo, cuando una operación de I/O termina, el sistema inmediatamente le pasa la CPU a ese proceso,
       para que pueda terminar su ejecución e iniciar la siguiente operación de I/O.
-      <br>
+      <br><br>
       📊 De esta forma, la CPU siempre se está usando mientras las operaciones de I/O se resuelven en paralelo, garantizando que la CPU tenga un 100% de eficiencia.
       
    </details>
