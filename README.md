@@ -110,7 +110,7 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    <summary>
       <h4>Ey! Look at the answer🙉</h4>
    </summary>
-      En esta situación, también se está enviando un primer proceso con una instrucción de I/O y un segundo proceso con 4 de CPU, pero ahora, el valor de la bandera <code>-S</code> se establece con el valor <code>SWITCH_ON_IO</code>. Lo que significa 
+      📌En esta situación, también se está enviando un primer proceso con una instrucción de I/O y un segundo proceso con 4 de CPU, pero ahora, el valor de la bandera <code>-S</code> se establece con el valor <code>SWITCH_ON_IO</code>. Lo que significa 
       que cuando un proceso inicia una operación I/O, el planificador puede cambiar a otro proceso que esté listo para ejecutarse en la CPU. En nuestro ejemplo, esto permite que el sistema pueda cambiar al proceso numero 2 mientras 
       el primero se encuentra en I/O, estableciendo el tiempo total en 7 tiempos.
 
