@@ -2,8 +2,8 @@
 
 |Integrante|correo|usuario github|
 |---|---|---|
-|Valentina Muñoz Rincón|valentina.munozr1@udea.edu.co|ValenMR|
-|Juan Felipe Escobar Rendón|juan.escobar15@udea.edu.co|juanfes517|
+|Valentina Muñoz Rincón 🐜|valentina.munozr1@udea.edu.co|ValenMR|
+|Juan Felipe Escobar Rendón 🐔|juan.escobar15@udea.edu.co|juanfes517|
 
 ## Instrucciones
 
@@ -18,11 +18,11 @@ Antes de empezar a realizar esta actividad haga un **fork** de este repositorio 
 
 This program, [`process-run.py`](process-run.py), allows you to see how process states change as programs run and either use the CPU (e.g., perform an add instruction) or do I/O (e.g., send a request to a disk and wait for it to complete). See the [README](https://github.com/remzi-arpacidusseau/ostep-homework/blob/master/cpu-intro/README.md) for details.
 
-### Questions
+### 🌟 Questions 🌟
 
 1. Run `process-run.py` with the following flags: `-l 5:100,5:100`. What should the CPU utilization be (e.g., the percent of time the CPU is in use?) Why do you know this? Use the `-c` and `-p` flags to see if you were right.
    
-   <img src="/meme_1.jpg" width="98" height="96"/>
+   <img src="/meme_1.jpg" width="150" height="150"/>
    
    <details>
    <summary>
@@ -44,7 +44,7 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
 
 2. Now run with these flags: `./process-run.py -l 4:100,1:0`. These flags specify one process with 4 instructions (all to use the CPU), and one that simply issues an I/O and waits for it to be done. How long does it take to complete both processes? Use `-c` and `-p` to find out if you were right. 
 
-   <img src="/meme_2.jpg" width="98" height="96"/>
+   <img src="/meme_2.jpg" width="150" height="150"/>
    
    <details>
    <summary>
@@ -63,7 +63,7 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
 
 4. Switch the order of the processes: `-l 1:0,4:100`. What happens now? Does switching the order matter? Why? (As always, use `-c` and `-p` to see if you were right)
 
-    <img src="/meme_3.jpg" width="98" height="100"/>
+    <img src="/meme_3.jpg" width="150" height="150"/>
     
    <details>
    <summary>
@@ -85,22 +85,31 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    <br>
 
 6. We'll now explore some of the other flags. One important flag is `-S`, which determines how the system reacts when a process issues an I/O. With the flag set to SWITCH ON END, the system will NOT switch to another process while one is doing I/O, instead waiting until the process is completely finished. What happens when you run the following two processes (`-l 1:0,4:100 -c -S SWITCH ON END`), one doing I/O and the other doing CPU work?
-   
-   <details>
-   <summary>Answer</summary>
-      En este caso, en el primer proceso se está enviando una instrucción que requiere I/O y en el segundo proceso se envían 4 instrucciones de CPU. Inicialmente, se puede llegar a pensar que el proceso 
-      va a tomar la misma cantidad de tiempo que el punto anterior (7 tiempos); sin embargo, debido al uso de la bandera <code>-S</code> con el valor <code>SWITCH_ON_END</code>, el sistema no cambiará a ningún proceso mientras 
-      una tarea de I/O se esté ejecutando. Por tal motivo, el proceso 2 no empezará hasta que el proceso 1 termine completamente, aunque la CPU se Encuentra disponible, lo que toma un total de 11 tiempos.  
 
-      <br>![Image 4](command_line_4.png)
+   <img src="/meme_4.jpg" width="150" height="150"/>
+   <details>
+   <summary>
+      <h4>Ey! Look at the answer🤓</h4>
+   </summary>
+      
+      ![Image 4](command_line_4.png)
+      
+   📌En este caso, en el primer proceso se está enviando una instrucción que requiere I/O y en el segundo proceso se envían 4 instrucciones de CPU. Inicialmente, se puede llegar a pensar que el proceso va a tomar la misma cantidad de tiempo que el punto anterior (7
+   tiempos); sin embargo, debido al uso de la bandera <code>-S</code> con el valor <code>SWITCH_ON_END</code>, el sistema no cambiará a ningún proceso mientras una tarea de I/O se esté ejecutando.
+
+   ✅Por tal motivo, el proceso 2 no empezará hasta que el proceso 1 termine completamente, aunque la CPU se Encuentra disponible, lo que toma un total de 11 tiempos.  
       
    </details>
    <br>
 
 6. Now, run the same processes, but with the switching behavior set to switch to another process whenever one is WAITING for I/O (`-l 1:0,4:100 -c -S SWITCH ON IO`). What happens now? Use `-c` and `-p` to confirm that you are right.
+
+   <img src="/meme_5.jpg" width="150" height="150"/>
    
    <details>
-   <summary>Answer</summary>
+   <summary>
+      <h4>Ey! Look at the answer🙉</h4>
+   </summary>
       En esta situación, también se está enviando un primer proceso con una instrucción de I/O y un segundo proceso con 4 de CPU, pero ahora, el valor de la bandera <code>-S</code> se establece con el valor <code>SWITCH_ON_IO</code>. Lo que significa 
       que cuando un proceso inicia una operación I/O, el planificador puede cambiar a otro proceso que esté listo para ejecutarse en la CPU. En nuestro ejemplo, esto permite que el sistema pueda cambiar al proceso numero 2 mientras 
       el primero se encuentra en I/O, estableciendo el tiempo total en 7 tiempos.
@@ -109,10 +118,14 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    </details>
    <br>
 
-7. One other important behavior is what to do when an I/O completes. With `-I IO RUN LATER`, when an I/O completes, the process that issued it is not necessarily run right away; rather, whatever was running at the time keeps running. What happens when you run this combination of processes? (`./process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH ON IO -c -p -I IO RUN LATER`) Are system resources being effectively utilized?
+8. One other important behavior is what to do when an I/O completes. With `-I IO RUN LATER`, when an I/O completes, the process that issued it is not necessarily run right away; rather, whatever was running at the time keeps running. What happens when you run this combination of processes? (`./process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH ON IO -c -p -I IO RUN LATER`) Are system resources being effectively utilized?
+
+   <img src="/meme_6.jpg" width="150" height="150"/>
    
    <details>
-   <summary>Answer</summary>
+   <summary>
+      <h4>Ey! Look at the answer👻</h4>
+   </summary>
       Para entender mejor el comportamiento de este comando, vamos a desglosar y explicar mejor cada parte del mismo:
       <ul>
          <br>
@@ -135,9 +148,13 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    <br>
 
 9. Now run the same processes, but with `-I IO RUN IMMEDIATE` set, which immediately runs the process that issued the I/O. How does this behavior differ? Why might running a process that just completed an I/O again be a good idea?
+
+   <img src="/meme_7.jpg" width="150" height="150"/>
    
    <details>
-   <summary>Answer</summary>
+   <summary>
+      <h4>Ey! Look at the answer🤑</h4>
+   </summary>
       Si ejecutamos el mismo comando usando <code>-I IO_RUN_IMMEDIATE</code> en vez de <code>-I IO_RUN_LATER</code> obtendremos el siguiente resultado: 
 
       <br> ![Image 7](command_line_7.png) <br>
@@ -161,6 +178,8 @@ This program, [`process-run.py`](process-run.py), allows you to see how process 
    </details>
    <br>
 
+
+<h1>¡GRACIAS TEACHER! 🌟 </h1>
 
 ### Criterios de evaluación
 - [x] Despligue de los resultados y analisis claro de los resultados respecto a lo visto en la teoria.
